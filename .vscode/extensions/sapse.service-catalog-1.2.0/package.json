@@ -1,0 +1,388 @@
+{
+	"name": "service-catalog",
+	"displayName": "Service Catalog",
+	"description": "Discover and consume OData services from SAP System ABAP catalogs.",
+	"version": "1.2.0",
+	"author": "SAP SE",
+	"publisher": "SAPSE",
+	"engines": {
+		"vscode": "^1.55.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"BAS",
+		"Web IDE",
+		"SAP"
+	],
+	"icon": "icon.png",
+	"license": "SEE LICENSE IN LICENSE",
+	"main": "./dist/extension",
+	"activationEvents": [],
+	"repository": {
+		"type": "git",
+		"url": "private"
+	},
+	"extensionDependencies": [
+		"saposs.code-snippet-tool",
+		"SAPOSS.app-studio-toolkit",
+		"SAPOS.yeoman-ui"
+	],
+	"contributes": {
+		"viewsWelcome": [
+			{
+				"view": "sapSystemWelcomeView",
+				"contents": "To add a system, you must be assigned the SAP Business Application Studio Administrator role in the SAP BTP cockpit.\nSee the [documentation](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/892114ce078b4e17a9ff7e751e6330cc.html) for more information.\n[Add System](command:sapSystemWelcomeView.addSystem)"
+			},
+			{
+				"view": "serviceCenterHelpWelcomeView",
+				"contents": "The Service Center provides a central entry point to explore services from various service providers.\n\nYou can use the services as data sources in your application and you can trigger application development from the Service Center.\n\nYou can create a project from a service, add a data model, and add systems.\nTo learn more about the different service providers, see the documentation:\n• [SAP System](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/892114ce078b4e17a9ff7e751e6330cc.html)\n• [SAP Business Accelerator Hub](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/1a2f306c9f9b4628bfa143f8e404ef0a.html)\n• [Developer Hub](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/328519b3b7c04871b63a41350190d4d5.html)\n• [Unified Customer Landscape](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/830adebf4ab3470c9c3278188ceef8a1.html)\n"
+			}
+		],
+		"commands": [
+			{
+				"command": "sapSystemSection.refresh",
+				"title": "Refresh Systems",
+				"icon": {
+					"light": "resources/images/light/refresh.svg",
+					"dark": "resources/images/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "sapSystemSection.updateTree",
+				"title": "Update Systems"
+			},
+			{
+				"command": "sapSystemSection.addSystem",
+				"title": "Add system",
+				"icon": {
+					"light": "resources/images/light/add_system_light.svg",
+					"dark": "resources/images/dark/add_system_dark.svg"
+				}
+			},
+			{
+				"command": "sapSystemWelcomeView.addSystem",
+				"title": "Add system"
+			},
+			{
+				"command": "sapSystemSection.searchService",
+				"title": "Search",
+				"icon": {
+					"light": "resources/images/light/search_icon.svg",
+					"dark": "resources/images/dark/search_icon.svg"
+				}
+			},
+			{
+				"command": "sapApiHubSection.searchService",
+				"title": "Search service",
+				"icon": {
+					"light": "resources/images/light/search_icon.svg",
+					"dark": "resources/images/dark/search_icon.svg"
+				}
+			},
+			{
+				"command": "sapApiHubEnterpriseSection.searchService",
+				"title": "Search service",
+				"icon": {
+					"light": "resources/images/light/search_icon.svg",
+					"dark": "resources/images/dark/search_icon.svg"
+				}
+			},
+			{
+				"command": "sapUclSection.searchService",
+				"title": "Search service",
+				"icon": {
+					"light": "resources/images/light/search_icon.svg",
+					"dark": "resources/images/dark/search_icon.svg"
+				}
+			},
+			{
+				"command": "serviceCenter.help",
+				"title": "Open the documentation",
+				"icon": {
+					"light": "resources/images/light/icon_question.svg",
+					"dark": "resources/images/dark/icon_question.svg"
+				}
+			},
+			{
+				"command": "sapApiHubSection.updateTree",
+				"title": "Update SAP Business Accelerator Hub"
+			},
+			{
+				"command": "sapApiHubEnterpriseSection.updateTree",
+				"title": "Update Developer Hub"
+			},
+			{
+				"command": "sapUclSection.updateTree",
+				"title": "Update UCL"
+			},
+			{
+				"command": "serviceCenter.openServiceCenterAsAnEditor",
+				"title": "Open Service Center as an editor"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "serviceCenterActivityBar",
+					"title": "Service Center",
+					"icon": "resources/images/dark/panel_icon.svg"
+				}
+			]
+		},
+		"views": {
+			"serviceCenterActivityBar": [
+				{
+					"id": "sapSystemSection",
+					"name": "SAP System",
+					"contextualTitle": "SAP System contextualTitle",
+					"visibility": "collapsed",
+					"when": "false"
+				},
+				{
+					"id": "sapSystemWelcomeView",
+					"name": "SAP System",
+					"visibility": "collapsed",
+					"contextualTitle": "API Sap System Enterprise contextualTitle",
+					"when": "false"
+				},
+				{
+					"id": "sapApiHubSection",
+					"name": "SAP Business Accelerator Hub",
+					"contextualTitle": "SAP Business Accelerator Hub contextualTitle",
+					"when": "false"
+				},
+				{
+					"id": "sapApiHubEnterpriseSection",
+					"name": "Developer Hub",
+					"contextualTitle": "Developer Hub contextualTitle",
+					"visibility": "collapsed",
+					"when": "false"
+				},
+				{
+					"id": "sapApiHubEnterpriseWebviewSection",
+					"name": "Developer Hub",
+					"contextualTitle": "Developer Hub contextualTitle",
+					"type": "webview",
+					"visibility": "collapsed",
+					"when": "false"
+				},
+				{
+					"id": "sapUclSection",
+					"name": "Unified Customer Landscape",
+					"contextualTitle": "Unified Customer Landscape contextualTitle",
+					"visibility": "collapsed",
+					"when": "false"
+				},
+				{
+					"id": "sapUclNoSystemsWebviewSection",
+					"name": "Unified Customer Landscape",
+					"contextualTitle": "Unified Customer Landscape no systems contextualTitle",
+					"type": "webview",
+					"visibility": "collapsed",
+					"when": "false"
+				},
+				{
+					"id": "serviceCenterHelpWelcomeView",
+					"name": "HELP",
+					"visibility": "collapsed",
+					"contextualTitle": "information about providers",
+					"when": "false"
+				},
+				{
+					"type": "webview",
+					"id": "explorationPinnedActivityBar",
+					"name": "Service Center",
+					"when": "true"
+				}
+			]
+		},
+		"menus": {
+			"view/title": [
+				{
+					"command": "sapSystemSection.refresh",
+					"when": "view == sapSystemSection",
+					"group": "navigation"
+				},
+				{
+					"command": "serviceCenter.help",
+					"when": "view == explorationPinnedActivityBar",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "sapSystemSection.addSystem",
+					"when": "view == sapSystemSection && viewItem =~ /^SubAccount/",
+					"group": "inline"
+				},
+				{
+					"command": "sapSystemSection.searchService",
+					"when": "viewItem =~ /CatalogC4c_Connected$/ || viewItem =~ /Catalog_Connected$/ || viewItem =~ /^SubAccount/",
+					"group": "inline"
+				},
+				{
+					"command": "sapApiHubSection.searchService",
+					"when": "viewItem =~ /ApiHubPackage_Connected$/ || viewItem =~ /ApiHubEventPackage_Connected$/",
+					"group": "inline"
+				},
+				{
+					"command": "sapApiHubEnterpriseSection.searchService",
+					"when": "viewItem =~ /ApiHubEnterpriseProduct_Connected$/",
+					"group": "inline"
+				},
+				{
+					"command": "sapUclSection.searchService",
+					"when": "viewItem =~ /UclPackageService_Connected$/ || viewItem =~ /UclPackageEvent_Connected$/",
+					"group": "inline"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "sapSystemSection.addSystem",
+					"when": "false"
+				},
+				{
+					"command": "sapSystemSection.searchService",
+					"when": "false"
+				},
+				{
+					"command": "sapApiHubSection.searchService",
+					"when": "false"
+				},
+				{
+					"command": "sapApiHubEnterpriseSection.searchService",
+					"when": "false"
+				},
+				{
+					"command": "sapUclSection.searchService",
+					"when": "false"
+				},
+				{
+					"command": "serviceCenter.openServiceCenterAsAnEditor",
+					"when": "false"
+				},
+				{
+					"command": "serviceCenter.help",
+					"when": "false"
+				}
+			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "Service Center",
+			"properties": {
+				"Service Center.logging.level": {
+					"type": "string",
+					"enum": [
+						"off",
+						"fatal",
+						"error",
+						"warn",
+						"info",
+						"debug",
+						"trace"
+					],
+					"default": "warn",
+					"description": "The verbosity of logging according to the following order: trace > debug > info > warn > error > fatal > off.",
+					"scope": "resource"
+				},
+				"Service Center.logging.sourceLocationTracking": {
+					"type": "boolean",
+					"default": false,
+					"description": "If chosen, the location of the source code is added to log entries. Warning – this action may slow your extension. We recommend you use it only for debugging.",
+					"scope": "resource"
+				},
+				"Service Center.loginCredentials.copy": {
+					"type": "string",
+					"enum": [
+						"Yes",
+						"No",
+						"Ask Later"
+					],
+					"default": "Ask Later",
+					"description": "When adding a service to a project, the system login credentials from the Service Center are copied to the project for running locally.",
+					"scope": "resource"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"ci": "yarn frontend:compile:copy && npm-run-all clean compile coverage bundle package",
+		"move-vsix-to-vsix-dir": "mv *.vsix ../vsix",
+		"ci:integration": "npm-run-all clean compile frontend:copy test:integration",
+		"ci:artifacts_only": "npm-run-all clean:dist bundle frontend:copy package move-vsix-to-vsix-dir",
+		"clean": "npm-run-all clean:dist clean:out clean:coverage",
+		"clean:dist": "rimraf ./dist *.vsix",
+		"clean:out": "rimraf ./out",
+		"clean:frontend": "cd ./resources/frontend-dist && shx rm -rf ./* && echo 'empty' > empty.txt",
+		"clean:coverage": "rimraf ./coverage ./.nyc_output",
+		"compile": "npm-run-all clean:out && tsc",
+		"compile:watch": "npm-run-all clean:out && tsc --build --watch",
+		"report-coverage": "nyc report",
+		"coverage": "npm-run-all clean:coverage test:coverage report-coverage",
+		"test:coverage": "vscode-test-runner --coverage",
+		"test": "npm-run-all compile && vscode-test-runner",
+		"test:integration": "mocha --config ./.mocharc_integration.js",
+		"bundle": "webpack --mode production",
+		"package": "vsce package --yarn",
+		"frontend:compile:copy": "yarn --cwd ../service_center_frontend/ build && yarn frontend:copy",
+		"frontend:copy": "npm-run-all clean:frontend && shx cp -r ../service_center_frontend/dist/. ../service_center_backend/resources/frontend-dist/",
+		"buildall:withfrontend": "yarn --cwd ../service_center_frontend/ build && yarn frontend:copy && yarn compile && yarn webpack-dev",
+		"watch": "tsc -watch -p ./",
+		"webpack-dev": "webpack --mode development",
+		"webpack-dev-watch": "webpack --mode development --watch",
+		"package-old": "shx mkdir -p pckg && shx cp -r dist resources README.md package.json .vscodeignore pckg && cd pckg && npm install --only=prod && vsce package",
+		"prepackage-old": "npm run frontend && webpack --mode production"
+	},
+	"dependencies": {
+		"@asyncapi/parser": "1.18.1",
+		"@bas-dev/rfc-provider": "1.0.14",
+		"@sap-devx/feature-toggle-node": "2.0.3",
+		"@sap/apihub-enterprise-service-provider": "1.3.5",
+		"@sap/apihub-service-provider": "3.0.0",
+		"@sap/bas-sdk": "3.12.0",
+		"@sap/subaccount-destination-service-provider": "2.12.2",
+		"@sap/ucl-provider": "2.6.6",
+		"@sap/wing-service-explorer": "1.8.5",
+		"@vscode-logging/wrapper": "2.0.0",
+		"@vscode-wing-service-center/common-packages": "^1.2.0",
+		"cheerio": "1.0.0",
+		"datauri": "4.1.0",
+		"fs-extra": "11.3.0",
+		"markdown-to-text": "0.1.1",
+		"wing-cap-utils": "0.3.6"
+	},
+	"devDependencies": {
+		"@sap-devx/app-studio-toolkit-types": "1.4.0",
+		"@sap-devx/code-snippet-types": "0.0.6",
+		"@sap-devx/webview-rpc": "0.4.1",
+		"@sap/consume-services-types": "0.3.12",
+		"@sap/vscode-test-runner": "0.6.0",
+		"@types/cheerio": "0.22.31",
+		"@types/fs-extra": "11.0.4",
+		"@types/html-validator": "5.0.6",
+		"@types/inquirer": "9.0.8",
+		"@types/node": "20.8.4",
+		"@types/vscode": "^1.49.0",
+		"@types/webpack-env": "1.18.8",
+		"@vscode-logging/logger": "2.0.0",
+		"@vscode-wing-service-center/service-center-frontend": "^1.2.0",
+		"axios": "1.12.0",
+		"axios-mock-adapter": "2.0.0",
+		"copy-webpack-plugin": "13.0.0",
+		"html-validator": "6.0.1",
+		"http-status-codes": "2.3.0",
+		"ts-loader": "9.5.2",
+		"vsce": "1.77.0",
+		"vscode-languageclient": "9.0.1",
+		"webpack": "5.100.1",
+		"webpack-cli": "6.0.1"
+	},
+	"__metadata": {
+		"installedTimestamp": 1767353268033,
+		"targetPlatform": "undefined",
+		"size": 223171600
+	}
+}

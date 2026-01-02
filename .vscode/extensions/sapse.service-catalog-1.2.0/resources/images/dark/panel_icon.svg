@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+  <g id="SC_icon_blabk" transform="translate(-690 -303)">
+    <g id="Rectangle_685" data-name="Rectangle 685" transform="translate(690 303)" fill="none" stroke="#de9b9b" stroke-width="1" opacity="0">
+      <rect width="28" height="28" stroke="none"/>
+      <rect x="0.5" y="0.5" width="27" height="27" fill="none"/>
+    </g>
+    <g id="Group_34" data-name="Group 34" transform="translate(24.984 -380.553)">
+      <path id="Subtraction_2" data-name="Subtraction 2" d="M10.808,25.66h0L0,20.378V6.452L5.4,3.811l9.688,5.235V14.28l-1.834.864V10.1L5.4,5.779,1.784,7.46V19.37l9.024,4.322L14.07,22.13a6.8,6.8,0,0,0,1.025,1.436L10.809,25.66ZM8.973,20.81h0L3.619,18.266V16.057l5.354,2.592V20.81Zm12.643-8.474h0a6.822,6.822,0,0,0-1.553-.178c-.076,0-.154,0-.231,0V6.291L10.808,1.968l-1.389.673L7.387,1.633,10.808,0,21.616,5.282v7.053Z" transform="translate(667.294 684.868)" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+      <g id="Group_3333" data-name="Group 3333" transform="translate(682.735 698.625)">
+        <path id="Rounded_Rectangle_5-2-2" data-name="Rounded Rectangle 5-2-2" d="M13.029,11.679v-.721A4.168,4.168,0,0,1,9.518,6.889V3.533h1.911V1.172a.76.76,0,0,1,1.515,0v2.36H14.6V1.172a.762.762,0,0,1,1.518,0v2.36h1.915V6.892a4.17,4.17,0,0,1-3.474,4.059v.729a.762.762,0,0,1-1.518,0Z" transform="translate(-9.518 -0.474)"/>
+      </g>
+    </g>
+  </g>
+</svg>
